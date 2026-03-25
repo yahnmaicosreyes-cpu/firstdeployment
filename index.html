@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Money Fitness – Home</title>
+  <link rel="stylesheet" href="styles.css">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav aria-label="Main">
+    <a href="index.html" class="nav-logo">💰 Money Fitness</a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active" aria-current="page">Home</a></li>
+      <li><a href="ask.html">Ask a Question</a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content">
+  <!-- HERO -->
+  <header class="hero">
+    <h1 class="hero-title">
+      Money Fitness
+      <span>for Everyone 💪</span>
+    </h1>
+    <p class="hero-sub">Level up your finances — no experience needed!</p>
+    <div class="hero-badges">
+      <span class="badge">🎓 Students</span>
+      <span class="badge">🏫 College</span>
+      <span class="badge">💼 Adults</span>
+      <span class="badge">📈 All Goals</span>
+    </div>
+  </header>
+
+  <!-- ASSESSMENT -->
+  <div class="section-wrap section-wrap--assessment">
+    <div id="assessment">
+      <p id="assessment-live" class="visually-hidden" aria-live="polite" aria-atomic="true"></p>
+
+      <!-- Step 1: Who are you? -->
+      <div class="step active" id="step-1">
+        <div class="step-label">Step 1 of 3</div>
+        <h2 class="step-question" id="step-1-heading">Who are you? 👋</h2>
+        <div class="choice-grid" role="group" aria-labelledby="step-1-heading">
+          <button type="button" class="choice-card" onclick="selectWho(this, 'highschool')" aria-pressed="false">
+            <span class="choice-icon" aria-hidden="true">🎒</span>
+            <span class="choice-label">High School Student</span>
+            <span class="choice-desc">Learning the basics of money</span>
+          </button>
+          <button type="button" class="choice-card" onclick="selectWho(this, 'college')" aria-pressed="false">
+            <span class="choice-icon" aria-hidden="true">🏫</span>
+            <span class="choice-label">College Student</span>
+            <span class="choice-desc">Managing loans, budgets & more</span>
+          </button>
+          <button type="button" class="choice-card" onclick="selectWho(this, 'adult')" aria-pressed="false">
+            <span class="choice-icon" aria-hidden="true">💼</span>
+            <span class="choice-label">Adult / Professional</span>
+            <span class="choice-desc">Building wealth & reaching goals</span>
+          </button>
+        </div>
+        <div class="assessment-nav">
+          <div class="step-dots">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+          <button class="btn btn-primary" onclick="goToStep(2)" id="next-1" disabled>Next →</button>
+        </div>
+      </div>
+
+      <!-- Step 2: What are your goals? -->
+      <div class="step" id="step-2" hidden>
+        <div class="step-label">Step 2 of 3</div>
+        <h2 class="step-question" id="step-2-heading">What are your goals? 🎯</h2>
+        <div class="goal-grid" id="goal-grid" role="group" aria-labelledby="step-2-heading">
+          <!-- Populated by JS -->
+        </div>
+        <div class="assessment-nav">
+          <button class="btn btn-outline" onclick="goToStep(1)">← Back</button>
+          <div class="step-dots">
+            <div class="dot"></div>
+            <div class="dot active"></div>
+            <div class="dot"></div>
+          </div>
+          <button class="btn btn-primary" onclick="goToStep(3)" id="next-2" disabled>Next →</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Result -->
+      <div class="step" id="step-3" hidden>
+        <div class="step-label">Step 3 of 3</div>
+        <h2 class="step-question" id="step-3-heading">Your Money Fitness Plan 🏆</h2>
+        <div class="result-card" id="result-card" aria-live="polite">
+          <!-- Populated by JS -->
+        </div>
+        <div class="assessment-nav assessment-nav--result">
+          <button class="btn btn-outline" onclick="goToStep(2)">← Back</button>
+          <div class="step-dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot active"></div>
+          </div>
+          <a href="ask.html" class="btn btn-gold">Ask a Money Question 💬</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ASK A QUESTION TEASER -->
+  <div class="section-wrap section-wrap--teaser">
+    <div class="ask-teaser">
+      <h2 class="section-title">Got a Money Question? 💬</h2>
+      <p>Whether it's about budgeting, saving, debt, or investing — ask anything and get personalized guidance tailored to your situation.</p>
+      <a href="ask.html" class="btn btn-primary">Ask a Money Question →</a>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="testimonials-inner">
+      <h2 class="section-title">Real People, Real Results ⭐</h2>
+      <p class="section-subtitle">See how Money Fitness has changed lives</p>
+
+      <div class="testimonials-grid">
+
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <img class="testimonial-avatar" src="https://i.pravatar.cc/100?img=47" alt="Sarah M.">
+            <div class="testimonial-info">
+              <h4>Sarah M.</h4>
+              <div class="role">🎒 High School Senior</div>
+            </div>
+          </div>
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"I never understood what a savings account actually did. Money Fitness broke it down for me and now I have $800 saved up — at 17!"</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <img class="testimonial-avatar" src="https://i.pravatar.cc/100?img=12" alt="James T.">
+            <div class="testimonial-info">
+              <h4>James T.</h4>
+              <div class="role">🏫 College Junior</div>
+            </div>
+          </div>
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"I was drowning in student loan confusion. After asking a few questions here, I have a clear payoff plan and actually feel in control."</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <img class="testimonial-avatar" src="https://i.pravatar.cc/100?img=32" alt="Maria L.">
+            <div class="testimonial-info">
+              <h4>Maria L.</h4>
+              <div class="role">💼 Marketing Professional</div>
+            </div>
+          </div>
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"I paid off $4,200 in credit card debt using the strategies I learned here. This tool is the real deal — clear, honest, no fluff."</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <img class="testimonial-avatar" src="https://i.pravatar.cc/100?img=67" alt="DeShawn R.">
+            <div class="testimonial-info">
+              <h4>DeShawn R.</h4>
+              <div class="role">🎒 High School Sophomore</div>
+            </div>
+          </div>
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"My teacher showed us this site and I went home and made my first budget ever. Now I actually know where my money goes every week."</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <img class="testimonial-avatar" src="https://i.pravatar.cc/100?img=25" alt="Priya K.">
+            <div class="testimonial-info">
+              <h4>Priya K.</h4>
+              <div class="role">🏫 College Graduate</div>
+            </div>
+          </div>
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"Finally started my emergency fund and opened a Roth IRA at 23. Money Fitness made investing feel less scary and way more doable."</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <img class="testimonial-avatar" src="https://i.pravatar.cc/100?img=53" alt="Carlos V.">
+            <div class="testimonial-info">
+              <h4>Carlos V.</h4>
+              <div class="role">💼 Small Business Owner</div>
+            </div>
+          </div>
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"As a self-employed person, taxes and budgeting were a nightmare. Money Fitness helped me understand what I should actually be setting aside."</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="ask.html">Ask a Question</a>
+    </div>
+    <p>© 2026 <strong>Money Fitness</strong> — Financial Wellness for Everyone</p>
+    <p class="disclaimer-text">⚠️ We are not licensed financial advisors. This tool is for educational purposes only. You are fully responsible for any financial decisions you make.</p>
+  </footer>
+
+  <!-- ASSESSMENT SCRIPT -->
+  <script>
+    const goals = {
+      highschool: [
+        '🐷 Start saving money', '📊 Understand budgeting', '💳 Learn about credit',
+        '🎓 Save for college', '💵 Make money as a teen', '📈 Learn about investing'
+      ],
+      college: [
+        '🎓 Manage student loans', '💰 Budget on a tight income', '🏦 Build an emergency fund',
+        '📈 Start investing early', '💳 Build good credit', '🏠 Plan for after graduation'
+      ],
+      adult: [
+        '💳 Pay off debt', '🏠 Save for a home', '📈 Grow investments',
+        '👪 Budget for a family', '🏖️ Save for retirement', '💼 Grow my business'
+      ]
+    };
+
+    const plans = {
+      highschool: {
+        title: "Your High School Money Workout 🎒",
+        body: "Great start! Focus on building the savings habit early, understanding how credit works, and letting compound interest work for you over time. Even $20/week adds up fast!"
+      },
+      college: {
+        title: "Your College Money Playbook 🏫",
+        body: "Smart move! Tackle your loans by understanding interest rates, build a small emergency fund first, and start a Roth IRA as soon as you have any income — time is your biggest asset."
+      },
+      adult: {
+        title: "Your Adult Wealth-Building Plan 💼",
+        body: "You've got this! Focus on eliminating high-interest debt first, then automate your savings and investments. Consistent monthly contributions beat timing the market every time."
+      }
+    };
+
+    let selectedWho = null;
+    let selectedGoals = [];
+
+    const stepAnnouncements = {
+      1: 'Step 1 of 3. Who are you?',
+      2: 'Step 2 of 3. What are your goals? Select one or more.',
+      3: 'Step 3 of 3. Your Money Fitness plan.'
+    };
+
+    function announceAssessment(msg) {
+      const live = document.getElementById('assessment-live');
+      if (!live) return;
+      live.textContent = '';
+      requestAnimationFrame(() => { live.textContent = msg; });
+    }
+
+    function focusStepHeading(stepEl) {
+      const h = stepEl.querySelector('.step-question');
+      if (!h) return;
+      h.setAttribute('tabindex', '-1');
+      h.focus({ preventScroll: true });
+    }
+
+    function selectWho(card, type) {
+      document.querySelectorAll('#step-1 .choice-card').forEach(c => {
+        c.classList.remove('selected');
+        c.setAttribute('aria-pressed', 'false');
+      });
+      card.classList.add('selected');
+      card.setAttribute('aria-pressed', 'true');
+      selectedWho = type;
+      document.getElementById('next-1').disabled = false;
+
+      // Pre-populate goals for step 2
+      const grid = document.getElementById('goal-grid');
+      grid.innerHTML = '';
+      goals[type].forEach(goal => {
+        const chip = document.createElement('button');
+        chip.type = 'button';
+        chip.className = 'goal-chip';
+        chip.textContent = goal;
+        chip.setAttribute('aria-pressed', 'false');
+        chip.addEventListener('click', function () { toggleGoal(chip, goal); });
+        grid.appendChild(chip);
+      });
+      selectedGoals = [];
+      document.getElementById('next-2').disabled = true;
+    }
+
+    function toggleGoal(chip, goal) {
+      chip.classList.toggle('selected');
+      const on = chip.classList.contains('selected');
+      chip.setAttribute('aria-pressed', on ? 'true' : 'false');
+      if (on) {
+        selectedGoals.push(goal);
+      } else {
+        selectedGoals = selectedGoals.filter(g => g !== goal);
+      }
+      document.getElementById('next-2').disabled = selectedGoals.length === 0;
+    }
+
+    function goToStep(n) {
+      document.querySelectorAll('.step').forEach(s => {
+        s.classList.remove('active');
+        s.hidden = true;
+      });
+      const stepEl = document.getElementById('step-' + n);
+      stepEl.classList.add('active');
+      stepEl.hidden = false;
+      announceAssessment(stepAnnouncements[n] || '');
+      focusStepHeading(stepEl);
+
+      if (n === 3 && selectedWho) {
+        const plan = plans[selectedWho];
+        const goalList = selectedGoals.slice(0, 3).join(' · ');
+        document.getElementById('result-card').innerHTML = `
+          <h3>${plan.title}</h3>
+          <p>${plan.body}</p>
+          ${goalList ? `<div style="background:rgba(255,255,255,0.1);border-radius:12px;padding:12px 16px;margin-top:12px;font-size:0.9rem;opacity:0.9;">Your focus areas: <strong>${goalList}</strong></div>` : ''}
+          <p style="margin-top:18px;font-size:0.9rem;opacity:0.75;">Ready to go deeper? Ask your specific money questions below!</p>
+        `;
+      }
+    }
+  </script>
+
+</body>
+</html>
