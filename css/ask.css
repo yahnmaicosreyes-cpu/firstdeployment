@@ -10,12 +10,12 @@
     padding: 40px;
     background: white;
     border-radius: 40px;
-    box-shadow: 0 8px 25px rgba(31,122,77,0.15);
+    box-shadow: 0 8px 25px rgba(36,113,163,0.15);
 }
 
 .page-content h2 {
     font-family: 'Fredoka', sans-serif;
-    color: #1f7a4d;
+    color: #2471a3;
     font-size: 2.2rem;
     margin-bottom: 10px;
 }
@@ -23,14 +23,14 @@
 .page-content h1 {
     font-family: 'Fredoka', sans-serif;
     font-weight: 700;
-    color: #1f7a4d;
+    color: #2471a3;
     font-size: 2.2rem;
     margin-bottom: 12px;
 }
 
 /* Intro paragraph above the question input */
 .ask-intro {
-    color: #555;
+    color: #2c3e50;
     line-height: 1.6;
     margin-bottom: 16px;
 }
@@ -43,7 +43,7 @@
 .question-block label {
     display: block;
     font-weight: 700;
-    color: #333;
+    color: #1c2833;
     font-size: 1.05rem;
     margin-bottom: 6px;
 }
@@ -59,7 +59,7 @@
 /* Live character countdown */
 .char-count {
     font-size: 0.85rem;
-    color: #1f7a4d;
+    color: #2471a3;
     margin-top: 6px;
     min-height: 1.2em;
 }
@@ -75,7 +75,7 @@
 .answer-heading {
     font-family: 'Fredoka', sans-serif;
     font-weight: 700;
-    color: #1f7a4d;
+    color: #2471a3;
     margin-bottom: 10px;
     font-size: 1.35rem;
     outline: none;
@@ -83,20 +83,20 @@
 
 .answer-heading:focus-visible {
     border-radius: 8px;
-    box-shadow: 0 0 0 3px rgba(31, 122, 77, 0.45);
+    box-shadow: 0 0 0 3px rgba(36, 113, 163, 0.45);
 }
 
 /* Matched topic labels shown above the answer paragraphs */
 .answer-topics {
     font-size: 0.9rem;
     font-weight: 700;
-    color: #4cb878;
+    color: #3498db;
     margin-bottom: 12px;
 }
 
 .answer-body p {
     line-height: 1.75;
-    color: #444;
+    color: #2c3e50;
     margin-bottom: 14px;
 }
 
@@ -110,7 +110,7 @@ textarea {
     width: 100%;
     height: 120px;
     padding: 15px;
-    border: 3px solid #4cb878;
+    border: 3px solid #3498db;
     border-radius: 20px;
     font-size: 1rem;
     font-family: inherit;
@@ -120,15 +120,15 @@ textarea {
 
 textarea:focus {
     outline: none;
-    border-color: #caae12;
-    box-shadow: 0 0 0 3px rgba(202, 174, 18, 0.35);
+    border-color: #d4ac0d;
+    box-shadow: 0 0 0 3px rgba(212, 172, 13, 0.35);
 }
 
 /* ---- Submit button ---- */
 
 .submit-btn {
     margin-top: 15px;
-    background: linear-gradient(135deg, #1f7a4d, #4cb878);
+    background: linear-gradient(135deg, #2471a3, #3498db);
     color: white;
     border: none;
     padding: 15px 30px;
@@ -141,13 +141,13 @@ textarea:focus {
 }
 
 .submit-btn:hover {
-    background: linear-gradient(135deg, #FFD700, #FFA500);
+    background: linear-gradient(135deg, #f1c40f, #d4ac0d);
     transform: scale(1.03);
 }
 
 .submit-btn:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(31, 122, 77, 0.45);
+    box-shadow: 0 0 0 3px rgba(36, 113, 163, 0.45);
 }
 
 /* ---- Answer box ---- */
@@ -160,10 +160,10 @@ textarea:focus {
 
 .answer-box {
     margin-top: 20px;
-    background: linear-gradient(135deg, #f0faf4, #fff8e1);
+    background: linear-gradient(135deg, #ecf0f1, #ffffff);
     border-radius: 20px;
     padding: 25px;
-    border-left: 6px solid #FFD700;
+    border-left: 6px solid #f1c40f;
     animation: fadeIn 0.5s ease;
 }
 
@@ -179,12 +179,12 @@ textarea:focus {
     background: white;
     border-radius: 40px;
     padding: 36px 28px;
-    box-shadow: 0 8px 25px rgba(31,122,77,0.12);
-    border-top: 5px solid #4cb878;
+    box-shadow: 0 8px 25px rgba(36,113,163,0.12);
+    border-top: 5px solid #3498db;
 }
 
 .ask-teaser p {
-    color: #555;
+    color: #2c3e50;
     max-width: 560px;
     margin: 0 auto 20px;
     line-height: 1.6;

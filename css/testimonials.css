@@ -15,9 +15,9 @@
     border-radius: 30px;
     padding: 25px;
     width: 280px;
-    box-shadow: 0 8px 25px rgba(31,122,77,0.15);
+    box-shadow: 0 8px 25px rgba(36,113,163,0.15);
     text-align: center;
-    border-top: 5px solid #FFD700;
+    border-top: 5px solid #f1c40f;
     transition: transform 0.3s;
 }
 
@@ -39,7 +39,7 @@
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    border: 4px solid #C0C0C0;
+    border: 4px solid #bdc3c7;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -52,28 +52,28 @@
 }
 
 /* Unique background colour for each of the six avatar circles */
-.testimonials-grid .testimonial-card:nth-child(1) .testimonial-avatar { background: #1f7a4d; }
-.testimonials-grid .testimonial-card:nth-child(2) .testimonial-avatar { background: #4cb878; }
-.testimonials-grid .testimonial-card:nth-child(3) .testimonial-avatar { background: #caae12; }
-.testimonials-grid .testimonial-card:nth-child(4) .testimonial-avatar { background: #2e8b57; }
-.testimonials-grid .testimonial-card:nth-child(5) .testimonial-avatar { background: #e8a020; }
-.testimonials-grid .testimonial-card:nth-child(6) .testimonial-avatar { background: #19814d; }
+.testimonials-grid .testimonial-card:nth-child(1) .testimonial-avatar { background: #2471a3; }
+.testimonials-grid .testimonial-card:nth-child(2) .testimonial-avatar { background: #3498db; }
+.testimonials-grid .testimonial-card:nth-child(3) .testimonial-avatar { background: #d4ac0d; }
+.testimonials-grid .testimonial-card:nth-child(4) .testimonial-avatar { background: #1a5276; }
+.testimonials-grid .testimonial-card:nth-child(5) .testimonial-avatar { background: #f1c40f; }
+.testimonials-grid .testimonial-card:nth-child(6) .testimonial-avatar { background: #2c3e50; }
 
 .stars {
-    color: #caae12;
+    color: #d4ac0d;
     font-size: 1.3rem;
     margin: 10px 0;
 }
 
 .testimonial-card p {
     font-style: italic;
-    color: #555;
+    color: #2c3e50;
 }
 
 .testimonial-info h4 {
     font-family: 'Fredoka', sans-serif;
     font-weight: 700;
-    color: #1f7a4d;
+    color: #2471a3;
     margin: 0 0 4px;
 }
 
