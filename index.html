@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; font-src 'self'; script-src 'self'; img-src 'self';">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Money Fitness – Home</title>
+  <title>Money Fitness – First Paycheck Guide</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -14,234 +14,55 @@
        ============================================================ -->
   <nav aria-label="Main">
     <a href="index.html" class="nav-logo">💰 Money Fitness</a>
-    <ul class="nav-links">
-      <li><a href="index.html" class="active" aria-current="page">Home</a></li>
-      <li><a href="ask.html">Ask a Question</a></li>
-    </ul>
   </nav>
 
   <main id="main-content">
-  <!-- ============================================================
-       HERO — headline, sub-copy, and audience badges
-       ============================================================ -->
-  <header class="hero">
-    <h1 class="hero-title">
-      Money Fitness
-      <span>for Everyone 💪</span>
-    </h1>
-    <p class="hero-sub">Level up your finances — no experience needed!</p>
-    <div class="hero-badges">
-      <span class="badge">🎓 Students</span>
-      <span class="badge">🏫 College</span>
-      <span class="badge">💼 Adults</span>
-      <span class="badge">📈 All Goals</span>
-    </div>
-  </header>
 
-  <!-- ============================================================
-       ASSESSMENT WIZARD — 3-step personalisation flow
-       Step 1: user type  |  Step 2: goals  |  Step 3: result card
-       Populated and wired by js/assessment.js
-       ============================================================ -->
-  <section class="section-wrap section-wrap--assessment" aria-label="Financial Assessment">
-    <div id="assessment">
-      <p id="assessment-live" class="visually-hidden" aria-live="polite" aria-atomic="true"></p>
+    <!-- ============================================================
+         HERO — focused on the first-time earner moment
+         ============================================================ -->
+    <header class="hero">
+      <h1 class="hero-title">First Paycheck?
+        <span>Here's exactly what to do.</span>
+      </h1>
+      <p class="hero-sub">Describe your situation — we'll show you the fastest way to access your money.</p>
+    </header>
 
-      <!-- Step 1: Who are you? -->
-      <div class="step active" id="step-1">
-        <div class="step-label">Step 1 of 3</div>
-        <h2 class="step-question" id="step-1-heading">Who are you? 👋</h2>
-        <div class="choice-grid" role="group" aria-labelledby="step-1-heading">
-          <button type="button" class="choice-card" data-who="highschool" aria-pressed="false">
-            <span class="choice-icon" aria-hidden="true">🎒</span>
-            <span class="choice-label">High School Student</span>
-            <span class="choice-desc">Learning the basics of money</span>
-          </button>
-          <button type="button" class="choice-card" data-who="college" aria-pressed="false">
-            <span class="choice-icon" aria-hidden="true">🏫</span>
-            <span class="choice-label">College Student</span>
-            <span class="choice-desc">Managing loans, budgets & more</span>
-          </button>
-          <button type="button" class="choice-card" data-who="adult" aria-pressed="false">
-            <span class="choice-icon" aria-hidden="true">💼</span>
-            <span class="choice-label">Adult / Professional</span>
-            <span class="choice-desc">Building wealth & reaching goals</span>
-          </button>
-        </div>
-        <div class="assessment-nav">
-          <div class="step-dots">
-            <div class="dot active"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
+    <!-- ============================================================
+         SIMULATOR — question input and 3-option paycheck guide
+         Wired by js/paycheck-sim.js
+         ============================================================ -->
+    <section class="section-wrap" aria-labelledby="sim-section-label">
+      <span id="sim-section-label" class="visually-hidden">Paycheck Simulator</span>
+
+      <div class="sim-card">
+
+        <form id="sim-form" aria-label="Paycheck situation form">
+          <div class="question-block">
+            <label for="sim-question">What's your situation?</label>
+            <textarea
+              id="sim-question"
+              name="question"
+              required
+              maxlength="500"
+              rows="4"
+              autocomplete="off"
+              aria-describedby="sim-hint sim-char-count"
+              placeholder="Example: I just got my first paycheck and I don't have a bank account — how do I get my money?"></textarea>
+            <p id="sim-hint" class="ask-hint">Mention if you have a bank account or not — that changes your best option.</p>
+            <p id="sim-char-count" class="char-count"></p>
+            <button type="submit" class="submit-btn" id="sim-submit">Show me what to do →</button>
           </div>
-          <button class="btn btn-primary" id="next-1" disabled>Next →</button>
-        </div>
-      </div>
+        </form>
 
-      <!-- Step 2: What are your goals? -->
-      <div class="step" id="step-2" hidden>
-        <div class="step-label">Step 2 of 3</div>
-        <h2 class="step-question" id="step-2-heading">What are your goals? 🎯</h2>
-        <div class="goal-grid" id="goal-grid" role="group" aria-labelledby="step-2-heading">
-          <!-- Populated by JS -->
-        </div>
-        <div class="assessment-nav">
-          <button class="btn btn-outline" data-goto-step="1">← Back</button>
-          <div class="step-dots">
-            <div class="dot"></div>
-            <div class="dot active"></div>
-            <div class="dot"></div>
-          </div>
-          <button class="btn btn-primary" id="next-2" disabled>Next →</button>
-        </div>
-      </div>
-
-      <!-- Step 3: Result -->
-      <div class="step" id="step-3" hidden>
-        <div class="step-label">Step 3 of 3</div>
-        <h2 class="step-question" id="step-3-heading">Your Money Fitness Plan 🏆</h2>
-        <div class="result-card" id="result-card" aria-live="polite">
-          <!-- Populated by JS -->
-        </div>
-        <div class="assessment-nav assessment-nav--result">
-          <button class="btn btn-outline" data-goto-step="2">← Back</button>
-          <div class="step-dots">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot active"></div>
-          </div>
-          <a href="ask.html" class="btn btn-gold">Ask a Money Question 💬</a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ============================================================
-       ASK A QUESTION TEASER — inline ask form on the home page
-       Full ask experience available at ask.html
-       Wired by js/ask-engine.js
-       ============================================================ -->
-  <section class="section-wrap section-wrap--teaser" aria-labelledby="teaser-heading">
-    <div class="ask-teaser">
-      <h2 class="section-title" id="teaser-heading">Got a Money Question? 💬</h2>
-      <p class="ask-intro">Ask right here from the home page and get general educational guidance based on your question.</p>
-
-      <form id="home-ask-form" aria-labelledby="home-ask-heading">
-        <div class="question-block">
-          <label for="home-money-question" id="home-ask-heading">What would you like help with?</label>
-          <textarea
-            id="home-money-question"
-            name="question"
-            required
-            maxlength="2000"
-            rows="5"
-            autocomplete="off"
-            aria-describedby="home-question-hint home-char-count"
-            placeholder="Example: I'm trying to pay off credit card debt and build savings at the same time."></textarea>
-          <p id="home-question-hint" class="ask-hint">Educational guidance only. Do not share sensitive account details.</p>
-          <p id="home-char-count" class="char-count"></p>
-          <button type="submit" class="submit-btn" id="home-ask-submit">Get my answer</button>
-        </div>
-      </form>
-
-      <div id="home-answer-output" class="answer-box" role="region" aria-labelledby="home-answer-heading" aria-live="polite" aria-atomic="true" hidden>
-        <h3 id="home-answer-heading" class="answer-heading" tabindex="-1">Here is some guidance</h3>
-        <p id="home-answer-topics" class="answer-topics" hidden></p>
-        <div id="home-answer-body" class="answer-body"></div>
-      </div>
-
-      <p class="ask-back">
-        <a href="ask.html" class="btn btn-outline">Open full Ask page →</a>
-      </p>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       TESTIMONIALS — social proof cards
-       ============================================================ -->
-  <section id="testimonials">
-    <div class="testimonials-inner">
-      <h2 class="section-title">Real People, Real Results ⭐</h2>
-      <p class="section-subtitle">See how Money Fitness has changed lives</p>
-
-      <div class="testimonials-grid">
-
-        <div class="testimonial-card">
-          <div class="testimonial-header">
-            <div class="testimonial-avatar" aria-hidden="true">SM</div>
-            <div class="testimonial-info">
-              <h4>Sarah M.</h4>
-              <div class="role">🎒 High School Senior</div>
-            </div>
-          </div>
-          <div class="stars">★★★★★</div>
-          <p class="testimonial-text">"I never understood what a savings account actually did. Money Fitness broke it down for me and now I have $800 saved up — at 17!"</p>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="testimonial-header">
-            <div class="testimonial-avatar" aria-hidden="true">JT</div>
-            <div class="testimonial-info">
-              <h4>James T.</h4>
-              <div class="role">🏫 College Junior</div>
-            </div>
-          </div>
-          <div class="stars">★★★★★</div>
-          <p class="testimonial-text">"I was drowning in student loan confusion. After asking a few questions here, I have a clear payoff plan and actually feel in control."</p>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="testimonial-header">
-            <div class="testimonial-avatar" aria-hidden="true">ML</div>
-            <div class="testimonial-info">
-              <h4>Maria L.</h4>
-              <div class="role">💼 Marketing Professional</div>
-            </div>
-          </div>
-          <div class="stars">★★★★★</div>
-          <p class="testimonial-text">"I paid off $4,200 in credit card debt using the strategies I learned here. This tool is the real deal — clear, honest, no fluff."</p>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="testimonial-header">
-            <div class="testimonial-avatar" aria-hidden="true">DR</div>
-            <div class="testimonial-info">
-              <h4>DeShawn R.</h4>
-              <div class="role">🎒 High School Sophomore</div>
-            </div>
-          </div>
-          <div class="stars">★★★★★</div>
-          <p class="testimonial-text">"My teacher showed us this site and I went home and made my first budget ever. Now I actually know where my money goes every week."</p>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="testimonial-header">
-            <div class="testimonial-avatar" aria-hidden="true">PK</div>
-            <div class="testimonial-info">
-              <h4>Priya K.</h4>
-              <div class="role">🏫 College Graduate</div>
-            </div>
-          </div>
-          <div class="stars">★★★★★</div>
-          <p class="testimonial-text">"Finally started my emergency fund and opened a Roth IRA at 23. Money Fitness made investing feel less scary and way more doable."</p>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="testimonial-header">
-            <div class="testimonial-avatar" aria-hidden="true">CV</div>
-            <div class="testimonial-info">
-              <h4>Carlos V.</h4>
-              <div class="role">💼 Small Business Owner</div>
-            </div>
-          </div>
-          <div class="stars">★★★★★</div>
-          <p class="testimonial-text">"As a self-employed person, taxes and budgeting were a nightmare. Money Fitness helped me understand what I should actually be setting aside."</p>
+        <div id="sim-output" class="sim-output" role="region" aria-labelledby="sim-heading" aria-live="polite" aria-atomic="true" hidden>
+          <h2 id="sim-heading" class="sim-output-heading" tabindex="-1">You have 3 ways to access your paycheck</h2>
+          <p class="sim-output-sub">Pick the one that fits your situation:</p>
+          <div id="sim-body"></div>
         </div>
 
       </div>
-    </div>
-  </section>
+    </section>
 
   </main>
 
@@ -249,16 +70,10 @@
        FOOTER
        ============================================================ -->
   <footer>
-    <div class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="ask.html">Ask a Question</a>
-    </div>
     <p>© 2026 <strong>Money Fitness</strong> — Financial Wellness for Everyone</p>
     <p class="disclaimer-text">⚠️ We are not licensed financial advisors. This tool is for educational purposes only. You are fully responsible for any financial decisions you make.</p>
   </footer>
 
-  <script src="js/ask-engine.js" type="module"></script>
-  <script src="js/assessment.js" type="module"></script>
-
+  <script src="js/paycheck-sim.js" type="module"></script>
 </body>
 </html>

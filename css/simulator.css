@@ -1,0 +1,233 @@
+/* ============================================================
+   SIMULATOR — option cards, numbered steps, Why?/How? toggles,
+   result and warning blocks, routing banner
+   ============================================================ */
+
+/* Fade-in when the output section is revealed */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* White card that wraps the form and output */
+.sim-card {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 40px;
+    padding: 36px 28px;
+    box-shadow: 0 8px 25px rgba(36,113,163,0.12);
+    border-top: 5px solid #3498db;
+}
+
+/* Output region shown after submission */
+.sim-output {
+    margin-top: 28px;
+    animation: fadeIn 0.4s ease;
+}
+
+.sim-output[hidden] {
+    display: none !important;
+}
+
+/* "You have 3 ways…" heading that receives focus on reveal */
+.sim-output-heading {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    color: #2471a3;
+    font-size: 1.5rem;
+    margin-bottom: 4px;
+    outline: none;
+}
+
+.sim-output-heading:focus-visible {
+    border-radius: 8px;
+    box-shadow: 0 0 0 3px rgba(36,113,163,0.45);
+}
+
+.sim-output-sub {
+    color: #2c3e50;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+/* Banner shown when we detected a routing signal in the question */
+.sim-routed {
+    font-size: 0.9rem;
+    color: #2471a3;
+    background: #ecf0f1;
+    border-radius: 12px;
+    padding: 10px 14px;
+    margin-bottom: 20px;
+}
+
+/* ---- Option cards ---- */
+
+.sim-option {
+    background: white;
+    border-radius: 20px;
+    border: 2px solid #bdc3c7;
+    border-left: 6px solid #bdc3c7;
+    padding: 24px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 12px rgba(36,113,163,0.08);
+}
+
+/* Gold highlight for the recommended option */
+.sim-option--recommended {
+    border-color: #f1c40f;
+    border-left-color: #f1c40f;
+    box-shadow: 0 6px 20px rgba(241,196,15,0.25);
+}
+
+/* Header row: title + tag badge + optional recommended badge */
+.sim-option-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.sim-option-title {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    color: #2471a3;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+/* Situational tag (Best long-term / Need cash now / No bank account) */
+.sim-tag {
+    background: #ecf0f1;
+    color: #2c3e50;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 999px;
+}
+
+/* "★ Recommended for you" badge */
+.sim-rec-badge {
+    background: #f1c40f;
+    color: #1c2833;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 999px;
+}
+
+/* "Do this if:" line */
+.sim-condition {
+    font-size: 0.95rem;
+    color: #2c3e50;
+    background: #ecf0f1;
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin-bottom: 18px;
+}
+
+/* ---- Numbered steps ---- */
+
+.sim-steps {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 18px;
+}
+
+.sim-step {
+    margin-bottom: 14px;
+}
+
+/* Step row: number circle + action text + Why?/How? button */
+.sim-step-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+/* Numbered circle rendered by JS */
+.sim-step-num {
+    background: #2471a3;
+    color: white;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    min-width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.sim-step-text {
+    flex: 1;
+    color: #1c2833;
+    font-size: 0.97rem;
+    line-height: 1.5;
+}
+
+/* Why?/How? toggle button — small and unobtrusive */
+.why-btn {
+    font: inherit;
+    cursor: pointer;
+    background: none;
+    border: 1px solid #bdc3c7;
+    color: #2471a3;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.why-btn:hover,
+.why-btn[aria-expanded="true"] {
+    background: #2471a3;
+    color: white;
+    border-color: #2471a3;
+}
+
+.why-btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(36,113,163,0.45);
+}
+
+/* Expandable explanation text */
+.why-content {
+    margin: 8px 0 0 36px;
+    padding: 10px 14px;
+    background: #ecf0f1;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    color: #2c3e50;
+    line-height: 1.65;
+}
+
+/* ---- Result and warning blocks ---- */
+
+.sim-result {
+    background: linear-gradient(135deg, #ecf0f1, #ffffff);
+    border-left: 4px solid #3498db;
+    border-radius: 0 12px 12px 0;
+    padding: 12px 16px;
+    font-size: 0.95rem;
+    color: #2c3e50;
+}
+
+/* Warning shown on the check-cashing option */
+.sim-warning {
+    margin-top: 12px;
+    background: rgba(241,196,15,0.12);
+    border-left: 4px solid #f1c40f;
+    border-radius: 0 12px 12px 0;
+    padding: 10px 14px;
+    font-size: 0.88rem;
+    color: #2c3e50;
+    line-height: 1.6;
+}

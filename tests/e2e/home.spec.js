@@ -4,87 +4,75 @@ test.describe('home page', () => {
 
   test('has correct page title', async ({ page }) => {
     await page.goto('/');
-    await expect(page).toHaveTitle('Money Fitness – Home');
+    await expect(page).toHaveTitle(/Money Fitness/);
   });
 
-  test.describe('assessment wizard', () => {
-
-    test('step 1 — next button is disabled on load', async ({ page }) => {
-      await page.goto('/');
-      const next = page.locator('#next-1');
-      await expect(next).toBeDisabled();
-    });
-
-    test('step 1 — selecting a user type enables next button', async ({ page }) => {
-      await page.goto('/');
-      await page.locator('[data-who="highschool"]').click();
-      await expect(page.locator('#next-1')).toBeEnabled();
-    });
-
-    test('step 1 → step 2 — clicking next shows goal chips', async ({ page }) => {
-      await page.goto('/');
-      await page.locator('[data-who="college"]').click();
-      await page.locator('#next-1').click();
-      await expect(page.locator('#step-2')).toBeVisible();
-      await expect(page.locator('#goal-grid .goal-chip').first()).toBeVisible();
-    });
-
-    test('step 2 — next button disabled until a goal is selected', async ({ page }) => {
-      await page.goto('/');
-      await page.locator('[data-who="adult"]').click();
-      await page.locator('#next-1').click();
-      await expect(page.locator('#next-2')).toBeDisabled();
-      await page.locator('#goal-grid .goal-chip').first().click();
-      await expect(page.locator('#next-2')).toBeEnabled();
-    });
-
-    test('full wizard flow — completes and shows result card', async ({ page }) => {
-      await page.goto('/');
-      await page.locator('[data-who="highschool"]').click();
-      await page.locator('#next-1').click();
-      await page.locator('#goal-grid .goal-chip').first().click();
-      await page.locator('#next-2').click();
-
-      await expect(page.locator('#step-3')).toBeVisible();
-      await expect(page.locator('#result-card h3')).toContainText('High School');
-    });
-
-    test('back navigation — step 3 back returns to step 2', async ({ page }) => {
-      await page.goto('/');
-      await page.locator('[data-who="adult"]').click();
-      await page.locator('#next-1').click();
-      await page.locator('#goal-grid .goal-chip').first().click();
-      await page.locator('#next-2').click();
-      await page.locator('[data-goto-step="2"]').click();
-
-      await expect(page.locator('#step-2')).toBeVisible();
-      await expect(page.locator('#step-3')).toBeHidden();
-    });
-
+  test('simulator form is visible on load', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.locator('#sim-form')).toBeVisible();
+    await expect(page.locator('#sim-question')).toBeVisible();
   });
 
-  test.describe('home ask form', () => {
+  test('simulator output is hidden on load', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.locator('#sim-output')).toBeHidden();
+  });
 
-    test('submitting a question shows the answer box', async ({ page }) => {
-      await page.goto('/');
-      await page.fill('#home-money-question', 'How do I start budgeting?');
-      await page.locator('#home-ask-form button[type="submit"]').click();
-      await expect(page.locator('#home-answer-output')).toBeVisible();
-    });
+  test('submitting a question reveals the output', async ({ page }) => {
+    await page.goto('/');
+    await page.fill('#sim-question', 'I just got my first paycheck and I have a bank account');
+    await page.locator('#sim-form button[type="submit"]').click();
+    await expect(page.locator('#sim-output')).toBeVisible();
+  });
 
-    test('answer body contains at least one paragraph', async ({ page }) => {
-      await page.goto('/');
-      await page.fill('#home-money-question', 'I need help with savings');
-      await page.locator('#home-ask-form button[type="submit"]').click();
-      await expect(page.locator('#home-answer-body p').first()).toBeVisible();
-    });
+  test('output shows exactly 3 option cards', async ({ page }) => {
+    await page.goto('/');
+    await page.fill('#sim-question', 'how do I cash my paycheck?');
+    await page.locator('#sim-form button[type="submit"]').click();
+    await expect(page.locator('#sim-body .sim-option')).toHaveCount(3);
+  });
 
-    test('nav link to ask page works', async ({ page }) => {
-      await page.goto('/');
-      await page.locator('nav a[href="ask.html"]').click();
-      await expect(page).toHaveTitle('Money Fitness – Ask a Question');
-    });
+  test('Why? button toggles explanation content', async ({ page }) => {
+    await page.goto('/');
+    await page.fill('#sim-question', 'I got my first paycheck, what do I do?');
+    await page.locator('#sim-form button[type="submit"]').click();
+    const btn = page.locator('.why-btn').first();
+    const content = page.locator('.why-content').first();
+    await expect(content).toBeHidden();
+    await btn.click();
+    await expect(content).toBeVisible();
+    await btn.click();
+    await expect(content).toBeHidden();
+  });
 
+  test('no bank account question puts check cashing first and marks it recommended', async ({ page }) => {
+    await page.goto('/');
+    await page.fill('#sim-question', 'I have no bank account and just got my first paycheck');
+    await page.locator('#sim-form button[type="submit"]').click();
+    const firstCard = page.locator('#sim-body .sim-option').first();
+    await expect(firstCard).toHaveClass(/sim-option--recommended/);
+    await expect(firstCard).toContainText('cashing');
+  });
+
+  test('has a bank + need cash puts cash-at-bank first', async ({ page }) => {
+    await page.goto('/');
+    await page.fill('#sim-question', 'I have a bank account and need cash today');
+    await page.locator('#sim-form button[type="submit"]').click();
+    const firstCard = page.locator('#sim-body .sim-option').first();
+    await expect(firstCard).toContainText('Cash it');
+  });
+
+  test('routing banner appears when a recommendation is made', async ({ page }) => {
+    await page.goto('/');
+    await page.fill('#sim-question', 'I have no bank account');
+    await page.locator('#sim-form button[type="submit"]').click();
+    await expect(page.locator('.sim-routed')).toBeVisible();
+  });
+
+  test('char count updates as user types', async ({ page }) => {
+    await page.goto('/');
+    await page.fill('#sim-question', 'hello');
+    await expect(page.locator('#sim-char-count')).toContainText('495 characters left');
   });
 
 });

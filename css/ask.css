@@ -1,43 +1,11 @@
 /* ============================================================
-   ASK — page shell, question form, textarea, submit button,
-   answer output box, and the home-page teaser version
+   FORM ELEMENTS — label, textarea, hint, char count, submit button
+   Shared by the simulator form on index.html
    ============================================================ */
-
-/* Shared white card used on the Ask a Question page */
-.page-content {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 40px;
-    background: white;
-    border-radius: 40px;
-    box-shadow: 0 8px 25px rgba(36,113,163,0.15);
-}
-
-.page-content h2 {
-    font-family: 'Fredoka', sans-serif;
-    color: #2471a3;
-    font-size: 2.2rem;
-    margin-bottom: 10px;
-}
-
-.page-content h1 {
-    font-family: 'Fredoka', sans-serif;
-    font-weight: 700;
-    color: #2471a3;
-    font-size: 2.2rem;
-    margin-bottom: 12px;
-}
-
-/* Intro paragraph above the question input */
-.ask-intro {
-    color: #2c3e50;
-    line-height: 1.6;
-    margin-bottom: 16px;
-}
 
 /* Wrapper around label + textarea + hint + submit */
 .question-block {
-    margin: 30px 0;
+    margin: 0 0 4px;
 }
 
 .question-block label {
@@ -48,7 +16,7 @@
     margin-bottom: 6px;
 }
 
-/* Privacy/usage hint below the textarea */
+/* Contextual hint below the textarea */
 .ask-hint {
     font-size: 0.9rem;
     color: #666;
@@ -64,51 +32,10 @@
     min-height: 1.2em;
 }
 
-/* "← Back to home" link row */
-.ask-back {
-    margin-top: 28px;
-    text-align: center;
-}
-
-/* ---- Answer output ---- */
-
-.answer-heading {
-    font-family: 'Fredoka', sans-serif;
-    font-weight: 700;
-    color: #2471a3;
-    margin-bottom: 10px;
-    font-size: 1.35rem;
-    outline: none;
-}
-
-.answer-heading:focus-visible {
-    border-radius: 8px;
-    box-shadow: 0 0 0 3px rgba(36, 113, 163, 0.45);
-}
-
-/* Matched topic labels shown above the answer paragraphs */
-.answer-topics {
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: #3498db;
-    margin-bottom: 12px;
-}
-
-.answer-body p {
-    line-height: 1.75;
-    color: #2c3e50;
-    margin-bottom: 14px;
-}
-
-.answer-body p:last-child {
-    margin-bottom: 0;
-}
-
-/* ---- Question textarea ---- */
+/* ---- Textarea ---- */
 
 textarea {
     width: 100%;
-    height: 120px;
     padding: 15px;
     border: 3px solid #3498db;
     border-radius: 20px;
@@ -148,44 +75,4 @@ textarea:focus {
 .submit-btn:focus-visible {
     outline: none;
     box-shadow: 0 0 0 3px rgba(36, 113, 163, 0.45);
-}
-
-/* ---- Answer box ---- */
-
-/* Fade-in animation when the answer appears */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.answer-box {
-    margin-top: 20px;
-    background: linear-gradient(135deg, #ecf0f1, #ffffff);
-    border-radius: 20px;
-    padding: 25px;
-    border-left: 6px solid #f1c40f;
-    animation: fadeIn 0.5s ease;
-}
-
-/* Force-hide with !important so the animation only plays on reveal */
-.answer-box[hidden] {
-    display: none !important;
-}
-
-/* ---- Home-page teaser version of the ask form ---- */
-
-.ask-teaser {
-    text-align: center;
-    background: white;
-    border-radius: 40px;
-    padding: 36px 28px;
-    box-shadow: 0 8px 25px rgba(36,113,163,0.12);
-    border-top: 5px solid #3498db;
-}
-
-.ask-teaser p {
-    color: #2c3e50;
-    max-width: 560px;
-    margin: 0 auto 20px;
-    line-height: 1.6;
 }

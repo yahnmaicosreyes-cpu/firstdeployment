@@ -10,7 +10,7 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       reporter: ['text', 'html'],
-      include: ['js/ask-engine.js', 'js/assessment.js']
+      include: ['js/paycheck-sim.js']
     }
   }
 });
