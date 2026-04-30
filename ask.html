@@ -2,17 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; font-src 'self'; script-src 'self'; img-src 'self';">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Money Fitness – Ask a Question</title>
   <link rel="stylesheet" href="styles.css">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
+  <!-- ============================================================
+       NAVIGATION
+       ============================================================ -->
   <nav aria-label="Main">
     <a href="index.html" class="nav-logo">💰 Money Fitness</a>
     <ul class="nav-links">
@@ -21,8 +20,12 @@
     </ul>
   </nav>
 
+  <!-- ============================================================
+       MAIN — ask form and answer output
+       Wired by js/ask-engine.js
+       ============================================================ -->
   <main id="main-content">
-    <div class="page-content ask-page">
+    <section class="page-content ask-page" aria-labelledby="ask-heading">
       <h1 id="ask-heading">Ask a Money Question 💬</h1>
       <p class="ask-intro">Type your question below. You will get <strong>general educational ideas</strong> based on keywords in your message — not personalized financial advice. For big decisions, talk to a qualified professional.</p>
 
@@ -35,6 +38,7 @@
             required
             maxlength="2000"
             rows="6"
+            autocomplete="off"
             aria-describedby="question-hint char-count"
             placeholder="Example: I'm in college and not sure how to start paying down my student loans…"></textarea>
           <p id="question-hint" class="ask-hint">Share context (student, working, goals) but never passwords or full account numbers.</p>
@@ -52,9 +56,12 @@
       <p class="ask-back">
         <a href="index.html" class="btn btn-outline">← Back to home</a>
       </p>
-    </div>
+    </section>
   </main>
 
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
   <footer>
     <div class="footer-links">
       <a href="index.html">Home</a>
@@ -64,6 +71,6 @@
     <p class="disclaimer-text">⚠️ We are not licensed financial advisors. This tool is for educational purposes only. You are fully responsible for any financial decisions you make.</p>
   </footer>
 
-  <script src="ask-engine.js" defer></script>
+  <script src="js/ask-engine.js" type="module"></script>
 </body>
 </html>

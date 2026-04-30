@@ -1,0 +1,95 @@
+/* ============================================================
+   HERO — header banner, badges, and page section wrappers
+   ============================================================ */
+
+/* Entry bounce animation for the hero title */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.hero {
+    background: linear-gradient(135deg, #19814d, #319f5d, #9cc9b0);
+    border: 1px solid #c4bebe;
+    padding: 80px 20px;
+    text-align: center;
+    border-radius: 0 0 50px 50px;
+}
+
+.hero-title {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    font-size: 4.5rem;
+    color: #caae12;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.15);
+    line-height: 1.2;
+    animation: bounce 0.6s ease-out;
+}
+
+.hero-title span {
+    color: white;
+    font-size: 3rem;
+    display: block;
+}
+
+.hero-sub {
+    color: white;
+    font-size: 1.3rem;
+    margin: 20px 0;
+}
+
+/* Audience badges row */
+.hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.badge {
+    background: rgba(255,255,255,0.25);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+/* Shared page section wrapper */
+.section-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px 40px;
+}
+
+.section-wrap--assessment {
+    padding-top: 50px;
+}
+
+.section-wrap--teaser {
+    padding-top: 20px;
+}
+
+/* Wider wrapper used by the testimonials section */
+.testimonials-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Section headings shared by multiple sections */
+.section-title {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    color: #1f7a4d;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #555;
+    margin-bottom: 8px;
+}

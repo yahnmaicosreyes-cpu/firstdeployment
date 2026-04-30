@@ -1,4 +1,13 @@
-const goals = {
+/* ============================================================
+   ASSESSMENT WIZARD
+   - goals:           goal chips shown in step 2, keyed by user type
+   - plans:           personalised result content for step 3
+   - buildResultCard: renders the step-3 result card into a container element
+   DOM wiring at the bottom runs only when the wizard elements exist.
+   ============================================================ */
+
+/* Goal options for step 2, grouped by the user type selected in step 1 */
+export const goals = {
   highschool: [
     '🐷 Start saving money', '📊 Understand budgeting', '💳 Learn about credit',
     '🎓 Save for college', '💵 Make money as a teen', '📈 Learn about investing'
@@ -13,7 +22,8 @@ const goals = {
   ]
 };
 
-const plans = {
+/* Personalised plan content displayed in the step-3 result card */
+export const plans = {
   highschool: {
     title: 'Your High School Money Workout 🎒',
     body: 'Great start! Focus on building the savings habit early, understanding how credit works, and letting compound interest work for you over time. Even $20/week adds up fast!'
@@ -28,14 +38,15 @@ const plans = {
   }
 };
 
-let selectedWho = null;
-let selectedGoals = [];
-
+/* Strings read aloud by screen readers when navigating between steps */
 const stepAnnouncements = {
   1: 'Step 1 of 3. Who are you?',
   2: 'Step 2 of 3. What are your goals? Select one or more.',
   3: 'Step 3 of 3. Your Money Fitness plan.'
 };
+
+let selectedWho = null;
+let selectedGoals = [];
 
 function announceAssessment(msg) {
   const live = document.getElementById('assessment-live');
@@ -62,7 +73,7 @@ function selectWho(card, type) {
   document.getElementById('next-1').disabled = false;
 
   const grid = document.getElementById('goal-grid');
-  grid.innerHTML = '';
+  grid.replaceChildren();
   goals[type].forEach(goal => {
     const chip = document.createElement('button');
     chip.type = 'button';
@@ -88,6 +99,35 @@ function toggleGoal(chip, goal) {
   document.getElementById('next-2').disabled = selectedGoals.length === 0;
 }
 
+export function buildResultCard(container, who, selectedGoalsList) {
+  const plan = plans[who];
+  const goalList = selectedGoalsList.slice(0, 3);
+
+  container.replaceChildren();
+
+  const h3 = document.createElement('h3');
+  h3.textContent = plan.title;
+  container.appendChild(h3);
+
+  const body = document.createElement('p');
+  body.textContent = plan.body;
+  container.appendChild(body);
+
+  if (goalList.length > 0) {
+    const focusDiv = document.createElement('div');
+    focusDiv.className = 'result-focus';
+    const strong = document.createElement('strong');
+    strong.textContent = goalList.join(' · ');
+    focusDiv.append('Your focus areas: ', strong);
+    container.appendChild(focusDiv);
+  }
+
+  const cta = document.createElement('p');
+  cta.className = 'result-cta';
+  cta.textContent = 'Ready to go deeper? Ask your specific money questions below!';
+  container.appendChild(cta);
+}
+
 function goToStep(n) {
   document.querySelectorAll('.step').forEach(s => {
     s.classList.remove('active');
@@ -100,13 +140,22 @@ function goToStep(n) {
   focusStepHeading(stepEl);
 
   if (n === 3 && selectedWho) {
-    const plan = plans[selectedWho];
-    const goalList = selectedGoals.slice(0, 3).join(' · ');
-    document.getElementById('result-card').innerHTML = `
-      <h3>${plan.title}</h3>
-      <p>${plan.body}</p>
-      ${goalList ? `<div style="background:rgba(255,255,255,0.1);border-radius:12px;padding:12px 16px;margin-top:12px;font-size:0.9rem;opacity:0.9;">Your focus areas: <strong>${goalList}</strong></div>` : ''}
-      <p style="margin-top:18px;font-size:0.9rem;opacity:0.75;">Ready to go deeper? Ask your specific money questions below!</p>
-    `;
+    buildResultCard(document.getElementById('result-card'), selectedWho, selectedGoals);
   }
+}
+
+// DOM wiring — only runs when the assessment elements are present
+const next1 = document.getElementById('next-1');
+const next2 = document.getElementById('next-2');
+
+if (next1 && next2) {
+  document.querySelectorAll('#step-1 .choice-card').forEach(card => {
+    card.addEventListener('click', function () { selectWho(card, card.dataset.who); });
+  });
+
+  next1.addEventListener('click', function () { goToStep(2); });
+  next2.addEventListener('click', function () { goToStep(3); });
+  document.querySelectorAll('[data-goto-step]').forEach(btn => {
+    btn.addEventListener('click', function () { goToStep(Number(btn.dataset.gotoStep)); });
+  });
 }

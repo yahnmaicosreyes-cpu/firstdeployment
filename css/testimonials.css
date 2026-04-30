@@ -1,0 +1,83 @@
+/* ============================================================
+   TESTIMONIALS — card grid, avatar initials, stars, and quotes
+   ============================================================ */
+
+.testimonials-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+    padding: 50px 40px;
+}
+
+.testimonial-card {
+    background: white;
+    border-radius: 30px;
+    padding: 25px;
+    width: 280px;
+    box-shadow: 0 8px 25px rgba(31,122,77,0.15);
+    text-align: center;
+    border-top: 5px solid #FFD700;
+    transition: transform 0.3s;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-8px);
+}
+
+/* Header row: avatar circle + name + role */
+.testimonial-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-align: left;
+    margin-bottom: 8px;
+}
+
+/* Avatar circle using initials; colour set per-card via nth-child below */
+.testimonial-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 4px solid #C0C0C0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: white;
+    flex-shrink: 0;
+    letter-spacing: 0.02em;
+}
+
+/* Unique background colour for each of the six avatar circles */
+.testimonials-grid .testimonial-card:nth-child(1) .testimonial-avatar { background: #1f7a4d; }
+.testimonials-grid .testimonial-card:nth-child(2) .testimonial-avatar { background: #4cb878; }
+.testimonials-grid .testimonial-card:nth-child(3) .testimonial-avatar { background: #caae12; }
+.testimonials-grid .testimonial-card:nth-child(4) .testimonial-avatar { background: #2e8b57; }
+.testimonials-grid .testimonial-card:nth-child(5) .testimonial-avatar { background: #e8a020; }
+.testimonials-grid .testimonial-card:nth-child(6) .testimonial-avatar { background: #19814d; }
+
+.stars {
+    color: #caae12;
+    font-size: 1.3rem;
+    margin: 10px 0;
+}
+
+.testimonial-card p {
+    font-style: italic;
+    color: #555;
+}
+
+.testimonial-info h4 {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    color: #1f7a4d;
+    margin: 0 0 4px;
+}
+
+.testimonial-info .role {
+    font-size: 0.9rem;
+    color: #666;
+}

@@ -2,18 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; font-src 'self'; script-src 'self'; img-src 'self';">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Money Fitness – Home</title>
   <link rel="stylesheet" href="styles.css">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- NAVIGATION -->
+  <!-- ============================================================
+       NAVIGATION
+       ============================================================ -->
   <nav aria-label="Main">
     <a href="index.html" class="nav-logo">💰 Money Fitness</a>
     <ul class="nav-links">
@@ -23,7 +21,9 @@
   </nav>
 
   <main id="main-content">
-  <!-- HERO -->
+  <!-- ============================================================
+       HERO — headline, sub-copy, and audience badges
+       ============================================================ -->
   <header class="hero">
     <h1 class="hero-title">
       Money Fitness
@@ -38,8 +38,12 @@
     </div>
   </header>
 
-  <!-- ASSESSMENT -->
-  <div class="section-wrap section-wrap--assessment">
+  <!-- ============================================================
+       ASSESSMENT WIZARD — 3-step personalisation flow
+       Step 1: user type  |  Step 2: goals  |  Step 3: result card
+       Populated and wired by js/assessment.js
+       ============================================================ -->
+  <section class="section-wrap section-wrap--assessment" aria-label="Financial Assessment">
     <div id="assessment">
       <p id="assessment-live" class="visually-hidden" aria-live="polite" aria-atomic="true"></p>
 
@@ -48,17 +52,17 @@
         <div class="step-label">Step 1 of 3</div>
         <h2 class="step-question" id="step-1-heading">Who are you? 👋</h2>
         <div class="choice-grid" role="group" aria-labelledby="step-1-heading">
-          <button type="button" class="choice-card" onclick="selectWho(this, 'highschool')" aria-pressed="false">
+          <button type="button" class="choice-card" data-who="highschool" aria-pressed="false">
             <span class="choice-icon" aria-hidden="true">🎒</span>
             <span class="choice-label">High School Student</span>
             <span class="choice-desc">Learning the basics of money</span>
           </button>
-          <button type="button" class="choice-card" onclick="selectWho(this, 'college')" aria-pressed="false">
+          <button type="button" class="choice-card" data-who="college" aria-pressed="false">
             <span class="choice-icon" aria-hidden="true">🏫</span>
             <span class="choice-label">College Student</span>
             <span class="choice-desc">Managing loans, budgets & more</span>
           </button>
-          <button type="button" class="choice-card" onclick="selectWho(this, 'adult')" aria-pressed="false">
+          <button type="button" class="choice-card" data-who="adult" aria-pressed="false">
             <span class="choice-icon" aria-hidden="true">💼</span>
             <span class="choice-label">Adult / Professional</span>
             <span class="choice-desc">Building wealth & reaching goals</span>
@@ -70,7 +74,7 @@
             <div class="dot"></div>
             <div class="dot"></div>
           </div>
-          <button class="btn btn-primary" onclick="goToStep(2)" id="next-1" disabled>Next →</button>
+          <button class="btn btn-primary" id="next-1" disabled>Next →</button>
         </div>
       </div>
 
@@ -82,13 +86,13 @@
           <!-- Populated by JS -->
         </div>
         <div class="assessment-nav">
-          <button class="btn btn-outline" onclick="goToStep(1)">← Back</button>
+          <button class="btn btn-outline" data-goto-step="1">← Back</button>
           <div class="step-dots">
             <div class="dot"></div>
             <div class="dot active"></div>
             <div class="dot"></div>
           </div>
-          <button class="btn btn-primary" onclick="goToStep(3)" id="next-2" disabled>Next →</button>
+          <button class="btn btn-primary" id="next-2" disabled>Next →</button>
         </div>
       </div>
 
@@ -100,7 +104,7 @@
           <!-- Populated by JS -->
         </div>
         <div class="assessment-nav assessment-nav--result">
-          <button class="btn btn-outline" onclick="goToStep(2)">← Back</button>
+          <button class="btn btn-outline" data-goto-step="2">← Back</button>
           <div class="step-dots">
             <div class="dot"></div>
             <div class="dot"></div>
@@ -111,12 +115,16 @@
       </div>
 
     </div>
-  </div>
+  </section>
 
-  <!-- ASK A QUESTION TEASER -->
-  <div class="section-wrap section-wrap--teaser">
+  <!-- ============================================================
+       ASK A QUESTION TEASER — inline ask form on the home page
+       Full ask experience available at ask.html
+       Wired by js/ask-engine.js
+       ============================================================ -->
+  <section class="section-wrap section-wrap--teaser" aria-labelledby="teaser-heading">
     <div class="ask-teaser">
-      <h2 class="section-title">Got a Money Question? 💬</h2>
+      <h2 class="section-title" id="teaser-heading">Got a Money Question? 💬</h2>
       <p class="ask-intro">Ask right here from the home page and get general educational guidance based on your question.</p>
 
       <form id="home-ask-form" aria-labelledby="home-ask-heading">
@@ -128,6 +136,7 @@
             required
             maxlength="2000"
             rows="5"
+            autocomplete="off"
             aria-describedby="home-question-hint home-char-count"
             placeholder="Example: I'm trying to pay off credit card debt and build savings at the same time."></textarea>
           <p id="home-question-hint" class="ask-hint">Educational guidance only. Do not share sensitive account details.</p>
@@ -146,9 +155,11 @@
         <a href="ask.html" class="btn btn-outline">Open full Ask page →</a>
       </p>
     </div>
-  </div>
+  </section>
 
-  <!-- TESTIMONIALS -->
+  <!-- ============================================================
+       TESTIMONIALS — social proof cards
+       ============================================================ -->
   <section id="testimonials">
     <div class="testimonials-inner">
       <h2 class="section-title">Real People, Real Results ⭐</h2>
@@ -158,7 +169,7 @@
 
         <div class="testimonial-card">
           <div class="testimonial-header">
-            <img class="testimonial-avatar" src="https://i.pravatar.cc/100?img=47" alt="Sarah M.">
+            <div class="testimonial-avatar" aria-hidden="true">SM</div>
             <div class="testimonial-info">
               <h4>Sarah M.</h4>
               <div class="role">🎒 High School Senior</div>
@@ -170,7 +181,7 @@
 
         <div class="testimonial-card">
           <div class="testimonial-header">
-            <img class="testimonial-avatar" src="https://i.pravatar.cc/100?img=12" alt="James T.">
+            <div class="testimonial-avatar" aria-hidden="true">JT</div>
             <div class="testimonial-info">
               <h4>James T.</h4>
               <div class="role">🏫 College Junior</div>
@@ -182,7 +193,7 @@
 
         <div class="testimonial-card">
           <div class="testimonial-header">
-            <img class="testimonial-avatar" src="https://i.pravatar.cc/100?img=32" alt="Maria L.">
+            <div class="testimonial-avatar" aria-hidden="true">ML</div>
             <div class="testimonial-info">
               <h4>Maria L.</h4>
               <div class="role">💼 Marketing Professional</div>
@@ -194,7 +205,7 @@
 
         <div class="testimonial-card">
           <div class="testimonial-header">
-            <img class="testimonial-avatar" src="https://i.pravatar.cc/100?img=67" alt="DeShawn R.">
+            <div class="testimonial-avatar" aria-hidden="true">DR</div>
             <div class="testimonial-info">
               <h4>DeShawn R.</h4>
               <div class="role">🎒 High School Sophomore</div>
@@ -206,7 +217,7 @@
 
         <div class="testimonial-card">
           <div class="testimonial-header">
-            <img class="testimonial-avatar" src="https://i.pravatar.cc/100?img=25" alt="Priya K.">
+            <div class="testimonial-avatar" aria-hidden="true">PK</div>
             <div class="testimonial-info">
               <h4>Priya K.</h4>
               <div class="role">🏫 College Graduate</div>
@@ -218,7 +229,7 @@
 
         <div class="testimonial-card">
           <div class="testimonial-header">
-            <img class="testimonial-avatar" src="https://i.pravatar.cc/100?img=53" alt="Carlos V.">
+            <div class="testimonial-avatar" aria-hidden="true">CV</div>
             <div class="testimonial-info">
               <h4>Carlos V.</h4>
               <div class="role">💼 Small Business Owner</div>
@@ -234,7 +245,9 @@
 
   </main>
 
-  <!-- FOOTER -->
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
   <footer>
     <div class="footer-links">
       <a href="index.html">Home</a>
@@ -244,8 +257,8 @@
     <p class="disclaimer-text">⚠️ We are not licensed financial advisors. This tool is for educational purposes only. You are fully responsible for any financial decisions you make.</p>
   </footer>
 
-  <script src="ask-engine.js" defer></script>
-  <script src="assessment.js" defer></script>
+  <script src="js/ask-engine.js" type="module"></script>
+  <script src="js/assessment.js" type="module"></script>
 
 </body>
 </html>

@@ -1,0 +1,59 @@
+/* ============================================================
+   NAVIGATION — sticky top bar and logo
+   ============================================================ */
+
+nav {
+    background: linear-gradient(135deg, #1f7a4d, #4cb878);
+    border: 1px solid #c4bebe;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(31,122,77,0.3);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-radius: 0 0 30px 30px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 8px 16px;
+    border-radius: 25px;
+    transition: background 0.3s, color 0.3s, transform 0.3s;
+}
+
+nav ul li a:hover {
+    background: #a19f93;
+    color: #1f7a4d;
+    transform: scale(1.1);
+}
+
+/* Highlight the current page link */
+nav ul li a.active,
+nav ul li a[aria-current="page"] {
+    background: rgba(255,255,255,0.2);
+}
+
+/* Brand logo in the nav */
+.nav-logo {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: #FFD700;
+    text-decoration: none;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.nav-logo:hover {
+    color: #fff8e1;
+}

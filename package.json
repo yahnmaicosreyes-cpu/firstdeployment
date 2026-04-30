@@ -1,0 +1,27 @@
+{
+  "name": "money-fitness",
+  "version": "1.0.0",
+  "description": "Financial wellness education tool",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:all": "npm run test && npm run test:e2e"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yahnmaicosreyes-cpu/firstdeployment.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@vitest/coverage-v8": "^4.1.5",
+    "jsdom": "^29.1.0",
+    "serve": "^14.2.6",
+    "vitest": "^4.1.5"
+  }
+}
